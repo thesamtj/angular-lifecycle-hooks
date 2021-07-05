@@ -32,9 +32,9 @@ export class DisplayListComponent implements OnInit, OnChanges, DoCheck {
   @ViewChild('editModal') editModal: ModalDirective;
 
   ngOnChanges(changes: SimpleChanges) {
-    // console.log('--app-display-list--ngOnChanges()----');
-    // console.log('previous values', changes.itemList.previousValue);
-    // console.log('current values', changes.itemList.currentValue);
+    console.log('--app-display-list--ngOnChanges()----');
+    console.log('previous values', changes.itemList.previousValue);
+    console.log('current values', changes.itemList.currentValue);
     const itemList = changes.itemList.currentValue;
     if (undefined !== itemList) {
       this.items = itemList.map((item) => {
@@ -45,13 +45,13 @@ export class DisplayListComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngDoCheck() {
-     if (this.items !== this.itemList) {
-      this.items = this.itemList.map((item) => {
-        item.value = `Item: ${item.id}  Name:${item.name} Description: ${item.description}`;
-        return item;
-      });
-     }
-     // console.log('ngDoCheck', this.itemList);
+    //  if (this.items !== this.itemList) {
+    //   this.items = this.itemList.map((item) => {
+    //     item.value = `Item: ${item.id}  Name:${item.name} Description: ${item.description}`;
+    //     return item;
+    //   });
+    //  }
+    //  console.log('ngDoCheck', this.itemList);
   }
 
   deleteItem(event) {

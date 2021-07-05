@@ -50,10 +50,15 @@ export class AppComponent  implements OnInit, OnChanges, DoCheck, OnDestroy, Aft
   ngDoCheck() {}
 
   ngOnInit() {
-    console.log('app component OnInit');
-    this.appService.items.pipe(takeUntil(this.destroy$)).subscribe((data: any) => {
+    // console.log('app component OnInit');
+    // this.appService.items.pipe(takeUntil(this.destroy$)).subscribe((data: any) => {
+    //   this.itemList.push(data);
+    //   console.log(this.itemList.length);
+    // });
+
+    this.appService.items.subscribe((data: any) => {
       this.itemList.push(data);
-      console.log(this.itemList.length);
+      console.log("app component OnInit...", this.itemList.length);
     });
   }
 
