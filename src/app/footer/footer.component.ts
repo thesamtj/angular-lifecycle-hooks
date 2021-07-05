@@ -8,7 +8,8 @@ import {
   AfterContentChecked,
   OnDestroy,
   SimpleChanges,
-  AfterContentInit } from '@angular/core';
+  AfterContentInit,
+  Input} from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -19,6 +20,7 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck, AfterViewIni
         AfterContentInit, AfterViewChecked, AfterContentChecked, AfterViewChecked, OnDestroy {
 
   order = 1;
+  @Input() footerText;
 
   constructor() {
     console.log('I am from constructor()!! and my order::::' + this.order);
