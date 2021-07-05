@@ -7,20 +7,29 @@ import {
   SimpleChanges,
   AfterViewInit,
   AfterViewChecked,
-  ViewChild } from '@angular/core';
-import { tick } from '@angular/core/testing';
-import { AppService } from './app.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { FooterComponent } from './footer/footer.component';
+  ViewChild,
+} from "@angular/core";
+import { tick } from "@angular/core/testing";
+import { AppService } from "./app.service";
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
+import { FooterComponent } from "./footer/footer.component";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
-export class AppComponent  implements OnInit, OnChanges, DoCheck, OnDestroy, AfterViewInit, AfterViewChecked {
-  title = 'angular-lifecycle-hooks';
+export class AppComponent
+  implements
+    OnInit,
+    OnChanges,
+    DoCheck,
+    OnDestroy,
+    AfterViewInit,
+    AfterViewChecked
+{
+  title = "angular-lifecycle-hooks";
 
   constructor(private appService: AppService) {}
 
@@ -29,7 +38,7 @@ export class AppComponent  implements OnInit, OnChanges, DoCheck, OnDestroy, Aft
   showFooter = true;
   numberOfItems = 1;
 
-  @ViewChild('footer') footerComponent: FooterComponent;
+  @ViewChild("footer") footerComponent: FooterComponent;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
@@ -51,10 +60,12 @@ export class AppComponent  implements OnInit, OnChanges, DoCheck, OnDestroy, Aft
 
   ngOnInit() {
     // console.log('app component OnInit');
-    this.appService.items.pipe(takeUntil(this.destroy$)).subscribe((data: any) => {
-      this.itemList.push(data);
-      // console.log(this.itemList.length);
-    });
+    this.appService.items
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        this.itemList.push(data);
+        // console.log(this.itemList.length);
+      });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -62,16 +73,15 @@ export class AppComponent  implements OnInit, OnChanges, DoCheck, OnDestroy, Aft
   }
 
   ngAfterViewInit() {
-    console.log('ngAfterViewInit:::::app component');
+    console.log("ngAfterViewInit:::::app component");
     setTimeout(() => {
       this.footerComponent.numberOfItems = this.itemList.length;
     });
   }
 
   ngAfterViewChecked() {
-    console.log('ngAfterViewChecked:::::app component');
+    console.log("ngAfterViewChecked:::::app component");
   }
-
 
   ngOnDestroy() {
     this.destroy$.next(true);
@@ -81,5 +91,4 @@ export class AppComponent  implements OnInit, OnChanges, DoCheck, OnDestroy, Aft
   toggleFooter(evt) {
     this.showFooter = evt;
   }
-
 }

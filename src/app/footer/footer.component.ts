@@ -9,23 +9,33 @@ import {
   OnDestroy,
   SimpleChanges,
   AfterContentInit,
-  Input} from '@angular/core';
+  Input,
+} from "@angular/core";
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  selector: "app-footer",
+  templateUrl: "./footer.component.html",
+  styleUrls: ["./footer.component.css"],
 })
-export class FooterComponent implements OnInit, OnChanges, DoCheck, AfterViewInit,
-        AfterContentInit, AfterViewChecked, AfterContentChecked, AfterViewChecked, OnDestroy {
-
+export class FooterComponent
+  implements
+    OnInit,
+    OnChanges,
+    DoCheck,
+    AfterViewInit,
+    AfterContentInit,
+    AfterViewChecked,
+    AfterContentChecked,
+    AfterViewChecked,
+    OnDestroy
+{
   order = 1;
   @Input() footerText;
   @Input() numberOfItems: number;
 
   constructor() {
     // console.log('I am from constructor()!! and my order::::' + this.order);
-    console.log('I am from FooterComponent constructor()!!');
+    console.log("I am from FooterComponent constructor()!!");
     this.order++;
   }
 
@@ -68,5 +78,4 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck, AfterViewIni
     // console.log('I am from ngOnDestroy() and my order::::' + this.order);
     this.order++;
   }
-
 }
