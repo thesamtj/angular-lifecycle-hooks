@@ -1,25 +1,26 @@
 import {
   Component,
   OnInit,
-  Input, OnChanges,
+  Input,
+  OnChanges,
   SimpleChanges,
   DoCheck,
   Output,
   EventEmitter,
   ViewChild,
   AfterViewInit,
-  AfterViewChecked } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+  AfterViewChecked,
+} from "@angular/core";
+import { ModalDirective } from "ngx-bootstrap/modal";
 
 @Component({
-  selector: 'app-display-list',
-  templateUrl: './display-list.component.html',
-  styleUrls: ['./display-list.component.css']
+  selector: "app-display-list",
+  templateUrl: "./display-list.component.html",
+  styleUrls: ["./display-list.component.css"],
 })
 export class DisplayListComponent implements OnInit, OnChanges, DoCheck {
-
   constructor() {
-    console.log('I am from DisplayListComponent constructor()!!');
+    console.log("I am from DisplayListComponent constructor()!!");
   }
 
   @Input() itemList: any[];
@@ -27,14 +28,14 @@ export class DisplayListComponent implements OnInit, OnChanges, DoCheck {
   @Output() deleteOut = new EventEmitter();
   items: string[];
 
-  modalText = 'Item and Description!!!';
+  modalText = "Item and Description!!!";
 
-  @ViewChild('editModal') editModal: ModalDirective;
+  @ViewChild("editModal") editModal: ModalDirective;
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('--app-display-list--ngOnChanges()----');
-    console.log('previous values', changes.itemList.previousValue);
-    console.log('current values', changes.itemList.currentValue);
+    console.log("--app-display-list--ngOnChanges()----");
+    console.log("previous values", changes.itemList.previousValue);
+    console.log("current values", changes.itemList.currentValue);
     const itemList = changes.itemList.currentValue;
     if (undefined !== itemList) {
       this.items = itemList.map((item) => {
@@ -45,13 +46,13 @@ export class DisplayListComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngDoCheck() {
-    //  if (this.items !== this.itemList) {
-    //   this.items = this.itemList.map((item) => {
-    //     item.value = `Item: ${item.id}  Name:${item.name} Description: ${item.description}`;
-    //     return item;
-    //   });
-    //  }
-    //  console.log('ngDoCheck', this.itemList);
+     if (this.items !== this.itemList) {
+      this.items = this.itemList.map((item) => {
+        item.value = `Item: ${item.id}  Name:${item.name} Description: ${item.description}`;
+        return item;
+      });
+     }
+     console.log('ngDoCheck', this.itemList);
   }
 
   deleteItem(event) {
@@ -60,7 +61,7 @@ export class DisplayListComponent implements OnInit, OnChanges, DoCheck {
   }
 
   addDescription() {
-     this.showDescription.emit(true);
+    this.showDescription.emit(true);
   }
 
   ngOnInit() {
@@ -77,7 +78,5 @@ export class DisplayListComponent implements OnInit, OnChanges, DoCheck {
     this.editModal.hide();
   }
 
-  openModal() {
-  }
-
+  openModal() {}
 }
