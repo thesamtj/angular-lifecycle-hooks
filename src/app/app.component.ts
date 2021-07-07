@@ -50,15 +50,10 @@ export class AppComponent  implements OnInit, OnChanges, DoCheck, OnDestroy, Aft
   ngDoCheck() {}
 
   ngOnInit() {
-    // console.log('app component OnInit');
-    // this.appService.items.pipe(takeUntil(this.destroy$)).subscribe((data: any) => {
-    //   this.itemList.push(data);
-    //   console.log(this.itemList.length);
-    // });
-
-    this.appService.items.subscribe((data: any) => {
+    console.log('app component OnInit');
+    this.appService.items.pipe(takeUntil(this.destroy$)).subscribe((data: any) => {
       this.itemList.push(data);
-      console.log("app component OnInit...", this.itemList.length);
+      console.log(this.itemList.length);
     });
   }
 
@@ -68,9 +63,9 @@ export class AppComponent  implements OnInit, OnChanges, DoCheck, OnDestroy, Aft
 
   ngAfterViewInit() {
     console.log('ngAfterViewInit:::::app component');
-    // setTimeout(() => {
-    //   this.footerComponent.numberOfItems = this.itemList.length;
-    // });
+    setTimeout(() => {
+      this.footerComponent.numberOfItems = this.itemList.length;
+    });
   }
 
   ngAfterViewChecked() {

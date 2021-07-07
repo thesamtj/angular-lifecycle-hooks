@@ -21,6 +21,7 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck, AfterViewIni
 
   order = 1;
   @Input() footerText;
+  @Input() numberOfItems: number;
 
   constructor() {
     console.log('I am from constructor()!! and my order::::' + this.order);
