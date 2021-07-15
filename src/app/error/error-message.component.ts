@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ErrorMessageComponent implements OnInit {
 
   @Input() message;
-  @Input() numberOfAttempts;
+  @Input() numberOfAttempts = 12;
   time: any;
 
   constructor() {
