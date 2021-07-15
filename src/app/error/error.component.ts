@@ -19,16 +19,16 @@ export class ErrorComponent implements OnInit, AfterContentChecked, AfterContent
   ngOnInit() {}
 
   ngAfterContentChecked() {
-    // console.log('------ngAfterContentChecked-----');
-    // console.log(this.errorMessage.message);
+    console.log('------ngAfterContentChecked-----');
+    console.log(this.errorMessage.message);
     this.numberOfAttempts = this.errorMessage.numberOfAttempts;
     const date = new Date();
     this.errorMessage.time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() ;
   }
 
   ngAfterContentInit() {
-    // console.log('------ngAfterContentInit-----');
-    // console.log(this.errorMessage.message);
+    console.log('------ngAfterContentInit-----');
+    console.log(this.errorMessage.message);
     this.errorMessage.message = this.errorMessage.message.toUpperCase();
   }
 
